@@ -5,25 +5,34 @@ AOS.init();
 const experiencecards = document.querySelector(".experience-cards");
 const exp = [
   {
-    title: "Software Development Intern",
-    cardImage: "assets/images/experience-page/flipkart.jpg",
-    place: "Flipkart",
-    time: "(May, 2020 - present)",
-    desp: "<li>Worked to migrate Flipkart lite’s product page to AMP pages so that they load up instantly.</li> <li>Made changes in the current progressive web app of Flipkart to react to different actions performed on AMP page.</li> <li>Created a node module called “fk-amp” which abstracts all the files and middlewares and can be easily imported and used from express server.</li>",
+    title: "Team Lead",
+    cardImage: "assets/images/experience-page/cvwo.jpg",
+    place:
+      "Computing for Voluntary Welfare Organisations, Centre for Computing for Social Good & Philantrophy",
+    time: "(May, 2023 - Aug, 2023)",
+    desp: "<li>Led a team of developers to maintain and upgrade a Sparks, a volunteer management system for the GIC Sparks & Smiles Program.</li><li>Migrated a backend from Ruby on Rails to Go.</li>",
   },
   {
-    title: "Student Developer",
-    cardImage: "assets/images/experience-page/gsoc.png",
-    place: "Google Summer Of Code",
-    time: "(Mar - Aug, 2019)",
-    desp: "<li>Worked with MOZILLA as a part of Google Summer Of Code.</li><li>Worked on Extension Activity Monitor which is a privileged extension for Firefox that uses the activityLog API (privileged API) to monitor the activities of the other installed extensions.</li><li>The activityLog API listens for logs from other installed extensions.</li>",
+    title: "Machine Learning Intern",
+    cardImage: "assets/images/experience-page/samsung.png",
+    place: "Samsung SDS (Korea)",
+    time: "(May, 2022 - Aug, 2022)",
+    desp: "<li>Worked under Team9, a corporate venture in the Samsung SDS HQ that specialises in deepfake detection.</li><li>Developed a web app that helps clients visualise the class activation map of GAN-generated images and videos.</li>",
   },
   {
-    title: "Research Intern",
-    cardImage: "assets/images/experience-page/IIT_Bombay.jpg",
-    place: "IIT, Bombay",
-    time: "(Dec, 19 - Jan, 20)",
-    desp: "<li>Worked on the project “LTI (Learning Tools Interoperability) 2.0 standards Implementation for ekShiksha.</li><li>Designed a software that would help faculty to create a quiz using the questions from the database based on his/her choice of topics and he should be provided with various facilities and options to create a quiz of his choice.</li>",
+    title:
+      "Teaching Assistant for CS3216 Software Product Engineering for Digital Markets",
+    cardImage: "assets/images/experience-page/nus.jpg",
+    place: "National University of Singapore",
+    time: "(Aug, 2022 - Dec, 2022)",
+    desp: "<li>CS3216 is an admissions-based module to train top students to be the best software engineers.</li><li>As I was invited back to be a teaching assistant, I graded students' work on product design (Figma) and web development.</li>",
+  },
+  {
+    title: "CyberAI Intern",
+    cardImage: "assets/images/experience-page/dsta.jpg",
+    place: "Defence Science and Technology Agency",
+    time: "(May, 2021 - Aug, 2021)",
+    desp: "<li>Conducted text mining on malware analysis reports from information aggregators.</li><li>Applied Natural Language Processing techniques for data aggregation.</li>",
   },
 ];
 
