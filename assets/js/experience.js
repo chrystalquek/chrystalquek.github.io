@@ -6,30 +6,28 @@ const experiencecards = document.querySelector(".experience-cards");
 const exp = [
   {
     title: "Team Lead",
-    cardImage: "assets/images/experience-page/cvwo.jpg",
-    place:
-      "Computing for Voluntary Welfare Organisations, Centre for Computing for Social Good & Philantrophy",
+    cardImage: "assets/images/experience-page/cvwo.jpeg",
+    place: "Computing for Voluntary Welfare Organisations",
     time: "(May, 2023 - Aug, 2023)",
-    desp: "<li>Led a team of developers to maintain and upgrade a Sparks, a volunteer management system for the GIC Sparks & Smiles Program.</li><li>Migrated a backend from Ruby on Rails to Go.</li>",
+    desp: "<li>Led a team of developers to maintain and upgrade Sparks, a volunteer management system for the GIC Sparks & Smiles Program.</li><li>Migrated a backend from Ruby on Rails to Go.</li>",
   },
   {
     title: "Machine Learning Intern",
-    cardImage: "assets/images/experience-page/samsung.png",
+    cardImage: "assets/images/experience-page/samsung.jpeg",
     place: "Samsung SDS (Korea)",
     time: "(May, 2022 - Aug, 2022)",
     desp: "<li>Worked under Team9, a corporate venture in the Samsung SDS HQ that specialises in deepfake detection.</li><li>Developed a web app that helps clients visualise the class activation map of GAN-generated images and videos.</li>",
   },
   {
-    title:
-      "Teaching Assistant for CS3216 Software Product Engineering for Digital Markets",
-    cardImage: "assets/images/experience-page/nus.jpg",
+    title: "Teaching Assistant",
+    cardImage: "assets/images/experience-page/nus.jpeg",
     place: "National University of Singapore",
     time: "(Aug, 2022 - Dec, 2022)",
-    desp: "<li>CS3216 is an admissions-based module to train top students to be the best software engineers.</li><li>As I was invited back to be a teaching assistant, I graded students' work on product design (Figma) and web development.</li>",
+    desp: "<li>Taught Software Product Engineering for Digital Markets, an admissions-based module to train top students to be the best software engineers.</li><li>As I was invited back to be a teaching assistant, I graded students' work on product design (Figma) and web development.</li>",
   },
   {
     title: "CyberAI Intern",
-    cardImage: "assets/images/experience-page/dsta.jpg",
+    cardImage: "assets/images/experience-page/dsta.jpeg",
     place: "Defence Science and Technology Agency",
     time: "(May, 2021 - Aug, 2021)",
     desp: "<li>Conducted text mining on malware analysis reports from information aggregators.</li><li>Applied Natural Language Processing techniques for data aggregation.</li>",
