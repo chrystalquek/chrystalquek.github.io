@@ -155,8 +155,6 @@ let footer = $(`
     </div>
 
 
-    
-
     <div class="rounded-social-buttons tag">
     <a class="social-button linkedin" href="https://www.linkedin.com/in/chrystalquek" target="_blank" >
     <!-- svg code for linkedin icon -->
@@ -166,6 +164,15 @@ let footer = $(`
         <rect x="2" y="9" width="4" height="12"></rect>
         <circle cx="4" cy="4" r="2"></circle>
       </svg>
+    </a>
+
+
+     <a class="social-button github" href="https://www.facebook.com/chrystalquek" target="_blank">
+    <!-- SVG code for Facebook icon -->
+    <svg class="facebook-icon-footer" width="35" viewBox="0 0 24 24" fill="none" stroke="#1877F2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Facebook 'f' icon -->
+        <path fill="#1877F2" d="M15.117 8.338h-1.368c-1.185 0-1.453.559-1.453 1.524v2.131h2.905l-.331 3.353h-2.574v6.554H9.895v-6.554H7.413v-3.353h2.482v-2.063c0-2.162 1.305-3.605 3.302-3.605 0.953 0 1.757.078 2.019.113v2.563z"/>
+    </svg>
     </a>
 
 
