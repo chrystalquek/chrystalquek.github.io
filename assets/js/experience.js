@@ -5,6 +5,13 @@ AOS.init();
 const experiencecards = document.querySelector(".experience-cards");
 const exp = [
   {
+    title: "Engineer",
+    place: "Defence Science and Technology Agency",
+    cardImage: "assets/images/experience-page/dsta.jpeg",
+    time: "(July, 2024 - Now)",
+    desp: "<li>Developing a Java GUI application to faciliate army mission planning and presentations.</li>",
+  },
+  {
     title: "Team Lead",
     cardImage: "assets/images/experience-page/cvwo.jpeg",
     place: "Computing for Voluntary Welfare Organisations",

@@ -138,7 +138,13 @@ let footer = $(`
              <div class="form-header">
                 <h6 class="display">Get in Touch</h6>
               </div>
-                <form name="form1" action="https://formcarry.com/s/3ZGkygN2qge" method="POST" accept-charset="UTF-8" >
+
+
+
+              
+
+
+                <form name="form1" action="https://formcarry.com/s/3ZGkygN2qge" method="POST" accept-charset="UTF-8" target="dummyframe" >
                   <input id="name" type="text" name="name" placeholder="Your Name" required/>
                   <input id="email" type="email" name="email" placeholder="Email Address" required/>                  
                   <textarea id="textArea" name="message" placeholder="Type your Message" required></textarea>
@@ -148,6 +154,14 @@ let footer = $(`
                     <div id="lnch_btn"><i class="fas fa-space-shuttle"></i></div>
                   </div>
                 </form>
+
+
+
+                <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+
+
+
+
               </div>
             </div>
           </div>
