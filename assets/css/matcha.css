@@ -1,0 +1,62 @@
+/* Matcha Card Container */
+.matcha-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: #F5F5E6; /* Creamy white */
+}
+
+/* Individual Matcha Card */
+.matcha-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.matcha-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Image */
+.card-image {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Card Content */
+.card-content {
+    padding: 1rem;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Location Link */
+.card-content h3 a {
+    color: #6A994E; /* Matcha green */
+    text-decoration: none;
+}
+
+.card-content h3 a:hover {
+    text-decoration: underline;
+}
+
+/* Ratings */
+.ratings {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #6A994E;
+}
+
+/* Date Styling */
+.date {
+    font-size: 0.85rem;
+    color: #555;
+}
