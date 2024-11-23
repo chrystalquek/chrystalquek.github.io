@@ -9,6 +9,10 @@
 
 /* Individual Matcha Card */
 .matcha-card {
+    display: flex; /* Make the card a flex container */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Push content to the top and bottom */
+    height: 100%; /* Ensure the card takes the full height */
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -30,6 +34,7 @@
 
 /* Card Content */
 .card-content {
+    flex-grow: 1; /* Allow the content to take up remaining space */
     padding: 1rem;
     color: #333;
     display: flex;
@@ -49,14 +54,52 @@
 
 /* Ratings */
 .ratings {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    color: #6A994E;
+    margin-top: auto; /* Push the ratings to the bottom */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+    gap: 0.5rem; /* Add space between the items */
+    font-size: 0.9rem; /* Adjust font size for readability */
+    color: #6A994E; /* Matcha green */
 }
+
+/* Optional: Remove default margins/padding for spans */
+.grassy, .taste {
+    margin: 0;
+    padding: 0;
+}
+
+
 
 /* Date Styling */
 .date {
     font-size: 0.85rem;
     color: #555;
 }
+
+
+
+/* Title Container */
+.matcha-title {
+    text-align: center;
+    color: #6A994E; /* Matcha green */
+    font-family: 'Cormorant Garamond', serif; /* Warm and inviting serif font */
+}
+
+/* Main Title */
+.matcha-title h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    font-style: italic; /* Adds a touch of elegance */
+    color: #4A7C59; /* A darker matcha green */
+    letter-spacing: 1px; /* Gentle spacing */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Subtitle */
+.matcha-title p {
+    font-size: 1.2rem;
+    font-family: 'Open Sans', sans-serif; /* Clean and approachable font */
+    color: #4A4A4A; /* Neutral gray for subtleness */
+}
+

@@ -23,8 +23,19 @@ const matchaExperiences = [
         description: 'Ordered regular matcha and strawberry matcha. Location is pretty random, cafe has a good view of the Chinatown multi-story carpark. Pics looked good but matcha was mediocre. Do not recommend the strawberry matcha as the strawberry goo and matcha are not very fitting.',
         grassyLevel: 4,
         tasteLevel: 2
+    },
+    {
+        location: 'Hoshino Coffee (Vivo)',
+        dateTime: new Date(2024, 11, 22),
+        cardImages: ['assets/images/matcha/hoshino-coffee-vivo.HEIC'],
+        gmapsLink: 'https://maps.app.goo.gl/wDqQrwAfZYBh26Ce8',
+        description: 'This matcha latte is a little hard to describe - while it was very powdery, the taste was surprisingly good and strong. Tasted like good quality matcha powder.',
+        grassyLevel: 5,
+        tasteLevel: 4
     }
 ]
+
+matchaExperiences.forEach(exp => {exp.dateTime.setMonth(exp.dateTime.getMonth() - 1)});
 
 const cards = document.querySelector(".matcha-cards");
 
