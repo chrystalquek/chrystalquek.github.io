@@ -34,11 +34,11 @@ const matchaExperiences = [
         tasteLevel: 4
     },
     {
-        location: 'Hoshino Coffee (Vivo)',
+        location: 'Matchaya (Takashimaya)',
         dateTime: new Date(2024, 12, 10),
         cardImages: ['assets/images/matcha/matchaya-taka.HEIC'],
         gmapsLink: 'https://maps.app.goo.gl/ta1wW7dz6DU2EVaN9',
-        description: 'Ordered matcha milk and hojicha milk, reduced sugar for both. Sugar was surprisingly difficult to mix in to achieve a uniform taste. I think we could have ordered no sugar.',
+        description: 'Ordered matcha milk and hojicha milk, reduced sugar for both. Sugar was surprisingly difficult to mix in to achieve a uniform taste. Taste is pleasant, not too rich, matcha powder probably medium quality.',
         grassyLevel: 3,
         tasteLevel: 3
     }
