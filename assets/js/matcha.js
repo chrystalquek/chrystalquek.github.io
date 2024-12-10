@@ -32,6 +32,15 @@ const matchaExperiences = [
         description: 'This matcha latte is a little hard to describe - while it was very powdery, the taste was surprisingly good and strong. Tasted like good quality matcha powder.',
         grassyLevel: 5,
         tasteLevel: 4
+    },
+    {
+        location: 'Hoshino Coffee (Vivo)',
+        dateTime: new Date(2024, 12, 10),
+        cardImages: ['assets/images/matcha/matchaya-taka.HEIC'],
+        gmapsLink: 'https://maps.app.goo.gl/ta1wW7dz6DU2EVaN9',
+        description: 'Ordered matcha milk and hojicha milk, reduced sugar for both. Sugar was surprisingly difficult to mix in to achieve a uniform taste. I think we could have ordered no sugar.',
+        grassyLevel: 3,
+        tasteLevel: 3
     }
 ]
 
@@ -69,5 +78,8 @@ document.addEventListener("DOMContentLoaded", showCards);
 
 
 // TODOs
+
+// create a google form and pull data from it
+
 // other significant foods
 
