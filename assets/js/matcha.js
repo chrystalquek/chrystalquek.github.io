@@ -41,6 +41,33 @@ const matchaExperiences = [
         description: 'Ordered matcha milk and hojicha milk, reduced sugar for both. Sugar was surprisingly difficult to mix in to achieve a uniform taste. Taste is pleasant, not too rich, matcha powder probably medium quality.',
         grassyLevel: 3,
         tasteLevel: 3
+    },
+    {
+        location: 'ToMo Cafe (Neil Road)',
+        dateTime: new Date(2025, 3, 1),
+        cardImages: ['assets/images/matcha/tomo.HEIC'],
+        gmapsLink: 'https://g.co/kgs/WE5dAib',
+        description: 'I really liked this cafe, for the food though, I think the matcha was mediocre. Honestly I forgot how it taste like so the ratings might not be accurate.',
+        grassyLevel: 3,
+        tasteLevel: 3
+    },
+    {
+        location: 'KOKO Cafe and Patisserie',
+        dateTime: new Date(2024, 3, 26),
+        cardImages: ['assets/images/matcha/koko.HEIC'],
+        gmapsLink: 'https://g.co/kgs/C2V61kP',
+        description: 'Mediocre, feel like I could make it myself.',
+        grassyLevel: 3,
+        tasteLevel: 2
+    },
+    {
+        location: 'Haus Coffee',
+        dateTime: new Date(2024, 4, 4),
+        cardImages: ['assets/images/matcha/haus.jpeg'],
+        gmapsLink: 'https://g.co/kgs/91KmYwp',
+        description: 'Banana pudding matcha was AMAZING. Banana pudding and matcha go well together, but matcha standalone was already smooth. $9.50 but worth it! Cafe has interesting retro vibe (and interesting music...).',
+        grassyLevel: 1,
+        tasteLevel: 5
     }
 ]
 
