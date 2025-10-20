@@ -114,6 +114,25 @@ const matchaExperiences = [
         grassyLevel: 1,
         tasteLevel: 5
     },
+    {
+        location: 'ToMo Cafe (Neil Road)',
+        dateTime: new Date(2025, 9, 13),
+        cardImages: ['assets/images/matcha/tomo2.HEIC'],
+        gmapsLink: 'https://g.co/kgs/WE5dAib',
+        description: 'Second time trying matcha here. Actually the Mango Matcha is not bad, the mango puree helps to take some of the grassiness off.',
+        grassyLevel: 1,
+        tasteLevel: 4
+    },
+    {
+        location: 'Sweedy',
+        dateTime: new Date(2025, 9, 20),
+        cardImages: ['assets/images/matcha/sweedy.HEIC'],
+        gmapsLink: 'https://maps.app.goo.gl/Atz5en3bNTWVCKio9',
+        description: 'Wa damn nice, banana pudding matcha combo never fails to disappoint. Location very far though.',
+        grassyLevel: 1,
+        tasteLevel: 5
+    },
+    
 ]
 
 matchaExperiences.forEach(exp => {exp.dateTime.setMonth(exp.dateTime.getMonth() - 1)});
