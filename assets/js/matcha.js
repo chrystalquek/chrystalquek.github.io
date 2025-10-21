@@ -137,28 +137,48 @@ const matchaExperiences = [
 
 matchaExperiences.forEach(exp => {exp.dateTime.setMonth(exp.dateTime.getMonth() - 1)});
 
-// TODO add more from google sheets
+const API_URL = "https://script.google.com/macros/s/AKfycbx6k0TdtbEzayfuUej1rRVIVkAYleJHMlCi9WFJRN7hRYR6JJK9aGFVY-kn5qJW-1exYA/exec";
 
-// matchaExperiences.push( {
-//     location: 'KOKO Cafe and Patisserie',
-//     dateTime: new Date(2024, 3, 26),
-//     cardImages: ['assets/images/matcha/koko.HEIC'],
-//     gmapsLink: 'https://g.co/kgs/C2V61kP',
-//     description: 'Mediocre, feel like I could make it myself.',
-//     grassyLevel: 3,
-//     tasteLevel: 2
-// });
+
+function normalizeApiItem(apiItem) {
+    // Convert API object (from Apps Script) -> your card schema
+    // apiItem example: { location, dateISO, gmapsLink, description, grassyLevel, tasteLevel, cardImages: [url] }
+    return {
+      location: apiItem.location || '',
+      dateTime: apiItem.dateISO ? new Date(apiItem.dateISO) : null,
+      cardImages: Array.isArray(apiItem.cardImages) && apiItem.cardImages.length ? apiItem.cardImages : [],
+      gmapsLink: apiItem.gmapsLink || '',
+      description: apiItem.description || '',
+      grassyLevel: Number(apiItem.grassyLevel || 0),
+      tasteLevel: Number(apiItem.tasteLevel || 0),
+    };
+  }
+
+async function load() {
+    let apiItems = [];
+    try {
+        const res = await fetch(API_URL, { cache: "no-store" });
+        const data = await res.json();
+        apiItems = (data.items || []).map(normalizeApiItem);
+    } catch (e) {
+        console.warn('Failed to fetch API, rendering static only:', e);
+    }
+
+    const mergedData = matchaExperiences.concat(apiItems);
+    showCards(mergedData);
+}
+
 
 const cards = document.querySelector(".matcha-cards");
 
-const showCards = () => {
+const showCards = (matchaExperiences) => {
 
     let cardsHtml = "";
 
     for (const exp of matchaExperiences) {
         cardsHtml += `
         <div class="matcha-card">
-            <div class="card-image" style="background-image: url(${exp.cardImages[0]});"></div>
+            <img class="card-image" loading="lazy" src="${exp.cardImages[0]}" referrerPolicy="no-referrer"/>
             <div class="card-content">
                 <h3><a href="${exp.gmapsLink}" target="_blank">${exp.location}</a></h3>
                 <p class="date">${exp.dateTime.toDateString()}</p>
@@ -177,12 +197,10 @@ const showCards = () => {
 
 
 
-document.addEventListener("DOMContentLoaded", showCards);
+document.addEventListener("DOMContentLoaded", load);
 
 
 // TODOs
-
-// create a google form and pull data from it
 
 // other significant foods
 
