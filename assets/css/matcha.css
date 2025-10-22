@@ -109,3 +109,54 @@
     color: #4A4A4A; /* Neutral gray for subtleness */
 }
 
+/* Base FAB styling */
+.mx-fab {
+    position: fixed;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    background: linear-gradient(90deg,#6A994E,#4A7C59);
+    color: #fff;
+    text-decoration: none;
+    font: 600 14px/1.2 'Open Sans', system-ui, sans-serif;
+    box-shadow: 0 8px 22px rgba(0,0,0,.22);
+    z-index: 10000;
+    transition: transform .15s ease, filter .15s ease;
+}
+  
+/* Hover/focus */
+.mx-fab:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.mx-fab:active { transform: translateY(0); }
+.mx-fab:focus-visible { outline: 3px solid #CDE4C5; outline-offset: 2px; }
+  
+/* Position helpers */
+.pos-bottom-right {
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(16px + env(safe-area-inset-bottom));
+}
+.pos-top-right {
+    right: calc(16px + env(safe-area-inset-right));
+    top: calc(16px + env(safe-area-inset-top));
+}
+  
+/* Mobile-first: bottom-right. On wide screens, move to top-right (optional). */
+@media (min-width: 992px) {
+    .pos-bottom-right {
+        top: calc(20px + env(safe-area-inset-top));
+        bottom: auto;
+    }
+}
+  
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .mx-fab { transition: none; }
+}
+
+/* Optional: compact variant on very small screens */
+@media (max-width: 360px) {
+    .mx-fab span { display: none; }      /* icon-only on tiny screens */
+    .mx-fab { padding: 12px; }
+}
+  
