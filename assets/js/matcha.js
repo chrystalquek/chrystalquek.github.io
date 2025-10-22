@@ -178,7 +178,9 @@ const showCards = (matchaExperiences) => {
     for (const exp of matchaExperiences) {
         cardsHtml += `
         <div class="matcha-card">
-            <img class="card-image" loading="lazy" src="${exp.cardImages[0]}" referrerPolicy="no-referrer"/>
+            <div class="card-image-container">
+                <img loading="lazy" src="${exp.cardImages[0]}" referrerPolicy="no-referrer"/>
+            </div>
             <div class="card-content">
                 <h3><a href="${exp.gmapsLink}" target="_blank">${exp.location}</a></h3>
                 <p class="date">${exp.dateTime.toDateString()}</p>

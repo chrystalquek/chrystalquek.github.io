@@ -25,11 +25,17 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Card Image */
-.card-image {
+.card-image-container {
     height: 300px;
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
+}
+
+/* Card Image */
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* no distortion, center-cropped */
+    object-position: center;
 }
 
 /* Card Content */
