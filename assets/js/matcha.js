@@ -137,7 +137,7 @@ const matchaExperiences = [
 
 matchaExperiences.forEach(exp => {exp.dateTime.setMonth(exp.dateTime.getMonth() - 1)});
 
-const API_URL = "https://script.google.com/macros/s/AKfycbx6k0TdtbEzayfuUej1rRVIVkAYleJHMlCi9WFJRN7hRYR6JJK9aGFVY-kn5qJW-1exYA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyggYkcYry2FI-6TnhnwcFSVZFz61PPLDjZXieXQt3rFdv2yiQM4gLniyjBxFRvm_qwnw/exec";
 
 
 function normalizeApiItem(apiItem) {
@@ -145,7 +145,7 @@ function normalizeApiItem(apiItem) {
     // apiItem example: { location, dateISO, gmapsLink, description, grassyLevel, tasteLevel, cardImages: [url] }
     return {
       location: apiItem.location || '',
-      dateTime: apiItem.dateISO ? new Date(apiItem.dateISO) : null,
+      dateTime: apiItem.dateISO ? (() => { const [y, m, d] = apiItem.dateISO.split('T')[0].split('-'); return new Date(+y, +m - 1, +d); })() : null,
       cardImages: Array.isArray(apiItem.cardImages) && apiItem.cardImages.length ? apiItem.cardImages : [],
       gmapsLink: apiItem.gmapsLink || '',
       description: apiItem.description || '',
@@ -165,6 +165,11 @@ async function load() {
     }
 
     const mergedData = matchaExperiences.concat(apiItems);
+    mergedData.sort((a, b) => {
+        const dateA = a.dateTime ? a.dateTime.getTime() : 0;
+        const dateB = b.dateTime ? b.dateTime.getTime() : 0;
+        return dateB - dateA;
+    });
     showCards(mergedData);
 }
 
