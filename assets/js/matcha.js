@@ -146,13 +146,40 @@ function normalizeApiItem(apiItem) {
     return {
       location: apiItem.location || '',
       dateTime: apiItem.dateISO ? (() => { const [y, m, d] = apiItem.dateISO.split('T')[0].split('-'); return new Date(+y, +m - 1, +d); })() : null,
-      cardImages: Array.isArray(apiItem.cardImages) && apiItem.cardImages.length ? apiItem.cardImages : [],
+      cardImages: Array.isArray(apiItem.cardImages) && apiItem.cardImages.length
+        ? apiItem.cardImages.map(url => url.replace(/sz=w\d+/, 'sz=w800'))
+        : [],
       gmapsLink: apiItem.gmapsLink || '',
       description: apiItem.description || '',
       grassyLevel: Number(apiItem.grassyLevel || 0),
       tasteLevel: Number(apiItem.tasteLevel || 0),
     };
   }
+
+let sortMode = 'date';
+let allData = [];
+
+function shouldRevisit(exp) {
+    return exp.tasteLevel >= 4 && exp.grassyLevel <= 2;
+}
+
+function revisitScore(exp) {
+    return exp.tasteLevel * 2 - exp.grassyLevel;
+}
+
+function getSorted(data, mode) {
+    const sorted = [...data];
+    if (mode === 'date') {
+        sorted.sort((a, b) => {
+            const dateA = a.dateTime ? a.dateTime.getTime() : 0;
+            const dateB = b.dateTime ? b.dateTime.getTime() : 0;
+            return dateB - dateA;
+        });
+    } else {
+        sorted.sort((a, b) => revisitScore(b) - revisitScore(a));
+    }
+    return sorted;
+}
 
 async function load() {
     let apiItems = [];
@@ -164,13 +191,25 @@ async function load() {
         console.warn('Failed to fetch API, rendering static only:', e);
     }
 
-    const mergedData = matchaExperiences.concat(apiItems);
-    mergedData.sort((a, b) => {
-        const dateA = a.dateTime ? a.dateTime.getTime() : 0;
-        const dateB = b.dateTime ? b.dateTime.getTime() : 0;
-        return dateB - dateA;
+    allData = matchaExperiences.concat(apiItems);
+
+    const btnDate = document.getElementById('sortDate');
+    const btnRevisit = document.getElementById('sortRevisit');
+
+    btnDate.addEventListener('click', () => {
+        sortMode = 'date';
+        btnDate.classList.add('active');
+        btnRevisit.classList.remove('active');
+        showCards(getSorted(allData, 'date'));
     });
-    showCards(mergedData);
+    btnRevisit.addEventListener('click', () => {
+        sortMode = 'revisit';
+        btnRevisit.classList.add('active');
+        btnDate.classList.remove('active');
+        showCards(getSorted(allData, 'revisit'));
+    });
+
+    showCards(getSorted(allData, 'date'));
 }
 
 
@@ -184,7 +223,8 @@ const showCards = (matchaExperiences) => {
         cardsHtml += `
         <div class="matcha-card">
             <div class="card-image-container">
-                <img loading="lazy" src="${exp.cardImages[0]}" referrerPolicy="no-referrer"/>
+                ${shouldRevisit(exp) ? '<span class="revisit-badge">Revisit ✓</span>' : ''}
+                <img loading="lazy" decoding="async" src="${exp.cardImages[0]}" referrerPolicy="no-referrer"/>
             </div>
             <div class="card-content">
                 <h3><a href="${exp.gmapsLink}" target="_blank">${exp.location}</a></h3>
@@ -206,8 +246,6 @@ const showCards = (matchaExperiences) => {
 
 document.addEventListener("DOMContentLoaded", load);
 
-
-// TODOs
 
 // other significant foods
 

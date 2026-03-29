@@ -28,6 +28,45 @@
 .card-image-container {
     height: 300px;
     overflow: hidden;
+    position: relative;
+}
+
+.revisit-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    background: #4A7C59;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    pointer-events: none;
+}
+
+.sort-controls {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 2rem 1rem;
+}
+
+.sort-toggle {
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 2px solid #6A994E;
+    background: transparent;
+    color: #6A994E;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sort-toggle.active,
+.sort-toggle:hover {
+    background: #6A994E;
+    color: #fff;
 }
 
 /* Card Image */
