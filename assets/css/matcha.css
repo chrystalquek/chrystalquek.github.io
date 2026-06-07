@@ -69,12 +69,10 @@
     color: #fff;
 }
 
-/* Card Image */
-.card-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  /* no distortion, center-cropped */
-    object-position: center;
+.card-image-container canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* Card Content */

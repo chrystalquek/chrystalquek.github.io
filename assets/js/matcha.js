@@ -15,24 +15,24 @@ AOS.init();
 // }
 
 const matchaExperiences = [
-    {
-        location: 'Spring Coffee',
-        dateTime: new Date(2024, 11, 16),
-        cardImages: ['assets/images/matcha/spring-coffee.jpeg'],
-        gmapsLink: 'https://maps.app.goo.gl/7sWsSCrzzUCkuXCYA',
-        description: 'Ordered regular matcha and strawberry matcha. Location is pretty random, cafe has a good view of the Chinatown multi-story carpark. Pics looked good but matcha was mediocre. Do not recommend the strawberry matcha as the strawberry goo and matcha are not very fitting.',
-        grassyLevel: 4,
-        tasteLevel: 2
-    },
-    {
-        location: 'Hoshino Coffee (Vivo)',
-        dateTime: new Date(2024, 11, 22),
-        cardImages: ['assets/images/matcha/hoshino-coffee-vivo.HEIC'],
-        gmapsLink: 'https://maps.app.goo.gl/wDqQrwAfZYBh26Ce8',
-        description: 'This matcha latte is a little hard to describe - while it was very powdery, the taste was surprisingly good and strong. Tasted like good quality matcha powder.',
-        grassyLevel: 5,
-        tasteLevel: 4
-    },
+    // {
+    //     location: 'Spring Coffee',
+    //     dateTime: new Date(2024, 11, 16),
+    //     cardImages: ['assets/images/matcha/spring-coffee.jpeg'],
+    //     gmapsLink: 'https://maps.app.goo.gl/7sWsSCrzzUCkuXCYA',
+    //     description: 'Ordered regular matcha and strawberry matcha. Location is pretty random, cafe has a good view of the Chinatown multi-story carpark. Pics looked good but matcha was mediocre. Do not recommend the strawberry matcha as the strawberry goo and matcha are not very fitting.',
+    //     grassyLevel: 4,
+    //     tasteLevel: 2
+    // },
+    // {
+    //     location: 'Hoshino Coffee (Vivo)',
+    //     dateTime: new Date(2024, 11, 22),
+    //     cardImages: ['assets/images/matcha/hoshino-coffee-vivo.HEIC'],
+    //     gmapsLink: 'https://maps.app.goo.gl/wDqQrwAfZYBh26Ce8',
+    //     description: 'This matcha latte is a little hard to describe - while it was very powdery, the taste was surprisingly good and strong. Tasted like good quality matcha powder.',
+    //     grassyLevel: 5,
+    //     tasteLevel: 4
+    // },
     {
         location: 'Matchaya (Takashimaya)',
         dateTime: new Date(2024, 12, 10),
@@ -60,24 +60,24 @@ const matchaExperiences = [
         grassyLevel: 3,
         tasteLevel: 2
     },
-    {
-        location: 'Haus Coffee',
-        dateTime: new Date(2025, 4, 4),
-        cardImages: ['assets/images/matcha/haus.jpeg'],
-        gmapsLink: 'https://g.co/kgs/91KmYwp',
-        description: 'Banana pudding matcha was AMAZING. Banana pudding and matcha go well together, but matcha standalone was already smooth. $9.50 but worth it! Cafe has interesting retro vibe (and interesting music...).',
-        grassyLevel: 1,
-        tasteLevel: 5
-    },
-    {
-        location: 'Cafe Wabi Sabi',
-        dateTime: new Date(2025, 5, 24),
-        cardImages: ['assets/images/matcha/cafe-wabi-sabi.HEIC'],
-        gmapsLink: 'https://maps.app.goo.gl/Xdv3CtsyuXFgeXH29',
-        description: 'I THINK it was not bad, just too long ago to remember. Ratings might be abit random.',
-        grassyLevel: 3,
-        tasteLevel: 3
-    },
+    // {
+    //     location: 'Haus Coffee',
+    //     dateTime: new Date(2025, 4, 4),
+    //     cardImages: ['assets/images/matcha/haus.jpeg'],
+    //     gmapsLink: 'https://g.co/kgs/91KmYwp',
+    //     description: 'Banana pudding matcha was AMAZING. Banana pudding and matcha go well together, but matcha standalone was already smooth. $9.50 but worth it! Cafe has interesting retro vibe (and interesting music...).',
+    //     grassyLevel: 1,
+    //     tasteLevel: 5
+    // },
+    // {
+    //     location: 'Cafe Wabi Sabi',
+    //     dateTime: new Date(2025, 5, 24),
+    //     cardImages: ['assets/images/matcha/cafe-wabi-sabi.HEIC'],
+    //     gmapsLink: 'https://maps.app.goo.gl/Xdv3CtsyuXFgeXH29',
+    //     description: 'I THINK it was not bad, just too long ago to remember. Ratings might be abit random.',
+    //     grassyLevel: 3,
+    //     tasteLevel: 3
+    // },
     {
         location: 'Wooly\'s Bagels Arab Street',
         dateTime: new Date(2025, 6, 20),
@@ -137,7 +137,7 @@ const matchaExperiences = [
 
 matchaExperiences.forEach(exp => {exp.dateTime.setMonth(exp.dateTime.getMonth() - 1)});
 
-const API_URL = "https://script.google.com/macros/s/AKfycbyggYkcYry2FI-6TnhnwcFSVZFz61PPLDjZXieXQt3rFdv2yiQM4gLniyjBxFRvm_qwnw/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwTnf4mphaGh1kxuj3nUaaacYWnNAmuZ4-B00Y1c1flDUUM0hCREm3XJQVk431Ky4S4nw/exec";
 
 
 function normalizeApiItem(apiItem) {
@@ -153,6 +153,7 @@ function normalizeApiItem(apiItem) {
       description: apiItem.description || '',
       grassyLevel: Number(apiItem.grassyLevel || 0),
       tasteLevel: Number(apiItem.tasteLevel || 0),
+      cropBox: apiItem.cropBox || null, 
     };
   }
 
@@ -213,6 +214,58 @@ async function load() {
 }
 
 
+function loadCroppedImages() {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const canvas = entry.target;
+      obs.unobserve(canvas);
+      const src = canvas.dataset.src;
+      if (!src || src === 'undefined') {
+        console.log('No valid src for canvas, skipping:', canvas);
+        return; // ← add this guard
+      }
+      const cropBox = (() => { try { return JSON.parse(canvas.dataset.cropbox); } catch { return null; } })();
+      const img = new Image();
+    //   img.crossOrigin = 'anonymous';
+
+    
+    img.onload = () => {
+        const displayW = canvas.parentElement.offsetWidth;
+        const displayH = canvas.parentElement.offsetHeight; // 300px from CSS
+        canvas.width = displayW;
+        canvas.height = displayH;
+        const ctx = canvas.getContext('2d');
+
+        if (!cropBox) {
+            // Scale full image to cover the container (same as object-fit: cover)
+            const scale = Math.max(displayW / img.naturalWidth, displayH / img.naturalHeight);
+            const drawW = img.naturalWidth * scale;
+            const drawH = img.naturalHeight * scale;
+            ctx.drawImage(img, (displayW - drawW) / 2, (displayH - drawH) / 2, drawW, drawH);
+            return;
+        }
+
+        const iw = img.naturalWidth, ih = img.naturalHeight;
+        const cx = ((cropBox.x1 + cropBox.x2) / 2) * iw;
+        const cy = ((cropBox.y1 + cropBox.y2) / 2) * ih;
+        const bw = (cropBox.x2 - cropBox.x1) * iw, bh = (cropBox.y2 - cropBox.y1) * ih;
+        const half = Math.max(bw, bh) * 1.4 / 2;
+        const sx = Math.max(0, cx - half), sy = Math.max(0, cy - half);
+        const sw = Math.min(iw - sx, half * 2), sh = Math.min(ih - sy, half * 2);
+
+        // Draw cropped region scaled to fill the display container
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, displayW, displayH);
+    };
+
+      img.src = src;
+    });
+  }, { rootMargin: '200px' });
+
+  document.querySelectorAll('canvas[data-src]').forEach(c => observer.observe(c));
+}
+
+
 const cards = document.querySelector(".matcha-cards");
 
 const showCards = (matchaExperiences) => {
@@ -224,7 +277,7 @@ const showCards = (matchaExperiences) => {
         <div class="matcha-card">
             <div class="card-image-container">
                 ${shouldRevisit(exp) ? '<span class="revisit-badge">Revisit ✓</span>' : ''}
-                <img loading="lazy" decoding="async" src="${exp.cardImages[0]}" referrerPolicy="no-referrer"/>
+                <canvas class="card-img" data-src="${exp.cardImages[0] || ''}" data-cropbox='${JSON.stringify(exp.cropBox || null)}'></canvas>
             </div>
             <div class="card-content">
                 <h3><a href="${exp.gmapsLink}" target="_blank">${exp.location}</a></h3>
@@ -240,6 +293,8 @@ const showCards = (matchaExperiences) => {
     }
 
     cards.innerHTML = cardsHtml;
+
+    loadCroppedImages();
 }
 
 

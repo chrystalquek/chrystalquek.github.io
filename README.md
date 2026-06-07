@@ -15,3 +15,6 @@ I add new features and clean up the code in my free time.
 ## Proposed features
 
 - Autocrop using AI
+- Speed
+- Some images are white (check different browsers)
+(must still be mobile responsive)
