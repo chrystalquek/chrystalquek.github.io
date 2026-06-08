@@ -26,9 +26,10 @@
 }
 
 .card-image-container {
-    height: 300px;
-    overflow: hidden;
-    position: relative;
+  aspect-ratio: 3/4; /* portrait, matches phone photos */
+  height: unset;     /* remove fixed 300px */
+  overflow: hidden;
+  position: relative;
 }
 
 .revisit-badge {
